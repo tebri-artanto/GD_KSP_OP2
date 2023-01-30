@@ -11,10 +11,12 @@ package model;
 public class Staff extends Karyawan{
     private String noStaff;
 
-    public Staff(String noStaff, String nama, int jamKerja, String jenisKelamin) {
-        super(nama, jamKerja, jenisKelamin);
+    public Staff(String noStaff, String nama, int jamKerja, String jenisKelamin, Departemen departemen) {
+        super(nama, jamKerja, jenisKelamin, departemen);
         this.noStaff = noStaff;
     }
+
+    
 
     public String getNoStaff() {
         return noStaff;
