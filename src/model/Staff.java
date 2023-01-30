@@ -28,14 +28,8 @@ public class Staff extends Karyawan{
     
     @Override
     public long hitungGaji(){
-        return jamKerja * 1000000;
+        return jamKerja * 25000000;
     }
     
-    @Override
-    public String showDataKaryawan(){
-        return "Staff dengan nomor "+ noStaff + ", bernama "+ nama +
-                ", berjenis kelamin " + jenisKelamin +
-                " , memiliki gaji total = " +this.hitungGaji();
-        
-    }
+   
 }
