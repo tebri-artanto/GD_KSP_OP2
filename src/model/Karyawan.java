@@ -12,15 +12,18 @@ public abstract class Karyawan {
     protected String nama;
     protected int jamKerja;
     protected String jenisKelamin;
+    protected Departemen departemen;
     
     public Karyawan(){}
 
-    public Karyawan(String nama, int jamKerja, String jenisKelamin) {
+    public Karyawan(String nama, int jamKerja, String jenisKelamin, Departemen departemen) {
         this.nama = nama;
         this.jamKerja = jamKerja;
         this.jenisKelamin = jenisKelamin;
+        this.departemen = departemen;
     }
 
+    
     public String getNama() {
         return nama;
     }
