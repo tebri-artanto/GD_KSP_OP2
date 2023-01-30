@@ -9,6 +9,7 @@ package model;
  * @author Teprutz
  */
 public abstract class Karyawan {
+    int id;
     protected String nama;
     protected int jamKerja;
     protected String jenisKelamin;
@@ -49,5 +50,5 @@ public abstract class Karyawan {
     }
     
     public abstract long hitungGaji();
-    public abstract String showDataKaryawan();
+    //public abstract String showDataKaryawan();
 }
