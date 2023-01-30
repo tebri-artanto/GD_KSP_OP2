@@ -7,17 +7,17 @@ package model;
 public class Departemen {
     private String kodeDepartemen;
     private String namaDepartemen;
-    private int tahunBerdiri;
+    private int banyakAnggota;
     
     public Departemen()
     {
     }
 
-    public Departemen(String kodeDepartemen, String namaDepartemen, int tahunBerdiri) {
+    public Departemen(String kodeDepartemen, String namaDepartemen, int banyakAnggota) {
         this.kodeDepartemen = kodeDepartemen;
         this.namaDepartemen = namaDepartemen;
-        this.tahunBerdiri = tahunBerdiri;
-    }
+        this.banyakAnggota = banyakAnggota;
+    }  
     
     @Override
     public String toString(){
@@ -40,11 +40,20 @@ public class Departemen {
         this.namaDepartemen = namaDepartemen;
     }
 
+    public int getBanyakAnggota() {
+        return banyakAnggota;
+    }
+
+    public void setBanyakAnggota(int banyakAnggota) {
+        this.banyakAnggota = banyakAnggota;
+    }
+
+    
     public void showData()
     {
         System.out.println("Kode Departemen : "+kodeDepartemen);
         System.out.println("Nama Departemen : "+namaDepartemen);
-        System.out.println("Tahun Berdiri : "+tahunBerdiri);
+        System.out.println("Banyak Anggota: "+banyakAnggota);
         System.out.println("\n");
     }
     
