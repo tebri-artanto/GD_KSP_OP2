@@ -14,8 +14,9 @@ public abstract class Karyawan {
     protected int jamKerja;
     protected String jenisKelamin;
     protected Departemen departemen;
-    
-    public Karyawan(){}
+
+    public Karyawan() {
+    }
 
     public Karyawan(String nama, int jamKerja, String jenisKelamin, Departemen departemen) {
         this.nama = nama;
@@ -24,7 +25,6 @@ public abstract class Karyawan {
         this.departemen = departemen;
     }
 
-    
     public String getNama() {
         return nama;
     }
@@ -48,7 +48,8 @@ public abstract class Karyawan {
     public void setJenisKelamin(String jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
-    
+
     public abstract long hitungGaji();
-    //public abstract String showDataKaryawan();
+
+    public abstract String showDataKaryawan();
 }

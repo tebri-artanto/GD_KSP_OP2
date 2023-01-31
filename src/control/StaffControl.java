@@ -8,62 +8,67 @@ import java.util.List;
 import dao.StaffDAO;
 import java.util.ArrayList;
 import model.Staff;
-
-
+import table.TableStaff;
 
 public class StaffControl {
-    
-    private StaffDAO sDAO =new StaffDAO();
-    
-    public void insertDataStaff(Staff s){
+
+    private StaffDAO sDAO = new StaffDAO();
+
+    public void insertDataStaff(Staff s) {
         sDAO.makeConnection();
         sDAO.insert(s);
         sDAO.closeConnection();
     }
-    
-    public String showDataStaff(){
+
+    public String showDataStaff() {
         sDAO.makeConnection();
         List<Staff> staffData = sDAO.showStaff();
         sDAO.closeConnection();
-        
-        String staffString ="";
+
+        String staffString = "";
         for (int i = 0; i < staffData.size(); i++) {
             staffString = staffString + staffData.get(i).showDataKaryawan()
                     + " | ";
-            
+
         }
         return staffString;
     }
-    
-    public Staff searchStaff(String noStaff){
+
+    public Staff searchStaff(String noStaff) {
         Staff s = null;
         sDAO.makeConnection();
         s = sDAO.searchStaff(noStaff);
         sDAO.closeConnection();
-        
+
         return s;
-        
+
     }
-    
-    public void updateDataStaff(Staff s, String noStaff){
+
+    public void updateDataStaff(Staff s, String noStaff) {
         sDAO.makeConnection();
         sDAO.updateStaff(s, noStaff);
         sDAO.closeConnection();
     }
-    
-    public void deleteDataStaff(String noStaff){
+
+    public void deleteDataStaff(String noStaff) {
         sDAO.makeConnection();
         sDAO.deleteStaff(noStaff);
         sDAO.closeConnection();
     }
-    
-    public ArrayList<Staff> showTable(){
+
+    public ArrayList<Staff> showTable() {
         sDAO.makeConnection();
         ArrayList<Staff> list = sDAO.staffList();
         sDAO.closeConnection();
         return list;
-        
-        
     }
-    
+
+    public TableStaff showTableStaff() {
+        sDAO.makeConnection();
+        ArrayList<Staff> staffList = sDAO.staffList();
+        TableStaff tableStaff = new TableStaff(staffList);
+        sDAO.closeConnection();
+        return tableStaff;
+    }
+
 }
