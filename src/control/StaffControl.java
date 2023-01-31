@@ -6,7 +6,6 @@ package control;
 
 import java.util.List;
 import dao.StaffDAO;
-import java.util.ArrayList;
 import model.Staff;
 import table.TableStaff;
 
@@ -56,16 +55,11 @@ public class StaffControl {
         sDAO.closeConnection();
     }
 
-    public ArrayList<Staff> showTable() {
-        sDAO.makeConnection();
-        ArrayList<Staff> list = sDAO.staffList();
-        sDAO.closeConnection();
-        return list;
-    }
+    // di versi lama, ada showTable di sini, tapi tidak digunakan
 
     public TableStaff showTableStaff() {
         sDAO.makeConnection();
-        ArrayList<Staff> staffList = sDAO.staffList();
+        List<Staff> staffList = sDAO.showStaff();
         TableStaff tableStaff = new TableStaff(staffList);
         sDAO.closeConnection();
         return tableStaff;

@@ -44,9 +44,9 @@ public class StaffDAO {
     }
 
     public void insert(Staff s) {
-        String sql = "insert into staff(noStaff, nama, jamKerja, jenisKelamin) values('"
+        String sql = "insert into staff(noStaff, nama, jamKerja, jenisKelamin, kodeDepartemen) values('"
                 + s.getNoStaff() + "','" + s.getNama() + "'," + s.getJamKerja() + ",'"
-                + s.getJenisKelamin() + "')";
+                + s.getJenisKelamin() + "', " + s.getDepartemen().getKodeDepartemen() + ")";
         System.out.println("Adding Staff...");
 
         try {
@@ -71,15 +71,19 @@ public class StaffDAO {
             Statement statement = CON.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
+            DepartemenControl dc = new DepartemenControl(); // [!] Penambahan [!]
+
             if (rs != null) {
                 while (rs.next()) {
+                    Departemen d = dc.getByKode(rs.getString("kodeDepartemen")); // [!] Penambahan [!]
 
-                    // Staff s = new Staff(
-                    // rs.getString("noStaff"),
-                    // rs.getString("nama"),
-                    // rs.getInt("jamKerja"),
-                    // rs.getString("jenisKelamin"));
-                    // list.add(s);
+                    Staff s = new Staff(
+                            rs.getString("noStaff"),
+                            rs.getString("nama"),
+                            rs.getInt("jamKerja"),
+                            rs.getString("jenisKelamin"),
+                            d);
+                    list.add(s);
                 }
             }
             rs.close();
@@ -92,40 +96,8 @@ public class StaffDAO {
 
     }
 
-    public ArrayList<Staff> staffList() {
-        ArrayList<Staff> staffsList = new ArrayList<>();
-        String sql = "SELECT * FROM staff s JOIN karyawan k ON s.id_karyawan = k.id"; // [!] Query berubah [!]
-        try {
-            Statement statement = CON.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-
-            DepartemenControl dc = new DepartemenControl(); // [!] Penambahan [!]
-
-            if (rs != null) {
-                while (rs.next()) {
-                    Departemen d = dc.getByKode(rs.getString("kodeDepartemen")); // [!] Penambahan [!]
-                    Staff s = new Staff(
-                            rs.getString("noStaff"),
-                            rs.getString("nama"),
-                            Integer.parseInt(rs.getString("jamKerja")),
-                            rs.getString("jenisKelamin"),
-                            d);
-                    staffsList.add(s);
-
-                }
-            }
-            rs.close();
-            statement.close();
-        } catch (Exception e) {
-            System.out.println("Error reading database...");
-            System.out.println(e);
-        }
-        return staffsList;
-
-    }
-
     public Staff searchStaff(String noStaff) {
-        String sql = "SELECT * FROM staff s JOIN karyawan k ON s.id_karyawan = k.id WHERE noStaff = '" + noStaff + "'";
+        String sql = "select * from staff where noStaff = '" + noStaff + "'";
         // [!] Query berubah [!]
         System.out.println("Searching Staff...");
 
@@ -161,6 +133,7 @@ public class StaffDAO {
         String sql = "update staff set nama = '" + s.getNama() +
                 "',jamKerja = '" + s.getJamKerja() +
                 "',jenisKelamin = '" + s.getJenisKelamin() +
+                "',kodeDepartemen = '" + s.getDepartemen().getKodeDepartemen() +
                 "' where noStaff = '" + noStaff + "'";
         System.out.println("Editing Staff...");
 

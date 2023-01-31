@@ -69,7 +69,7 @@ public class DepartemenDAO {
         try {
             PreparedStatement statement = CON.prepareStatement(sql);
 
-            // Prepared Statement: Menghindari SQL Injection
+            // Prepared Statement
             statement.setString(1, kode);
 
             ResultSet result = statement.executeQuery();
@@ -99,7 +99,7 @@ public class DepartemenDAO {
         try {
             PreparedStatement statement = CON.prepareStatement(sql);
 
-            // Prepared Statement: Menghindari SQL Injection
+            // Prepared Statement
             statement.setString(1, "%" + query + "%");
             statement.setString(2, "%" + query + "%");
             statement.setString(3, "%" + query + "%");
@@ -131,7 +131,7 @@ public class DepartemenDAO {
         try {
             PreparedStatement statement = CON.prepareStatement(sql);
 
-            // Prepared Statement: Menghindari SQL Injection
+            // Prepared Statement
             statement.setString(1, D.getNamaDepartemen());
             statement.setInt(2, D.getBanyakAnggota());
             statement.setString(3, kodeDepartemen);
@@ -152,7 +152,7 @@ public class DepartemenDAO {
         try {
             PreparedStatement statement = CON.prepareStatement(sql);
 
-            // Prepared Statement: Menghindari SQL Injection
+            // Prepared Statement
             statement.setString(1, kodeDepartemen);
 
             int result = statement.executeUpdate();

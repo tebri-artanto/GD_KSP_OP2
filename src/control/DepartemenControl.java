@@ -16,6 +16,7 @@ public class DepartemenControl {
     }
 
     public Departemen getByKode(String kode) {
+        // akan digunakan di StaffDAO untuk mengambil departemen
         Departemen d = null;
         dDAO.makeConnection();
         d = dDAO.get(kode);

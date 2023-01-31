@@ -49,6 +49,14 @@ public abstract class Karyawan {
         this.jenisKelamin = jenisKelamin;
     }
 
+    public Departemen getDepartemen() {
+        return departemen;
+    }
+
+    public void setDepartemen(Departemen departemen) {
+        this.departemen = departemen;
+    }
+
     public abstract long hitungGaji();
 
     public abstract String showDataKaryawan();
