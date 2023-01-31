@@ -9,7 +9,6 @@ package model;
  * @author Teprutz
  */
 public abstract class Karyawan {
-    int id;
     protected String nama;
     protected int jamKerja;
     protected String jenisKelamin;
