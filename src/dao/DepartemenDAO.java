@@ -102,7 +102,6 @@ public class DepartemenDAO {
             // Prepared Statement
             statement.setString(1, "%" + query + "%");
             statement.setString(2, "%" + query + "%");
-            statement.setString(3, "%" + query + "%");
 
             ResultSet result = statement.executeQuery();
 

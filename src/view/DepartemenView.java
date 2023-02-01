@@ -19,12 +19,14 @@ public class DepartemenView extends javax.swing.JFrame {
     
     public DepartemenView() {
         initComponents();
+        setComponent(false);
+        departemenControl = new DepartemenControl();
+        showDepartemen();
     }
     public void setComponent(boolean value) {
         kodeDepartemenInput.setEnabled(value);
         namaDepartemenInput.setEnabled(value);
         banyakAnggotaInput.setEnabled(value);
-        searchDepartemenInput.setEnabled(value);
         
         saveBtn.setEnabled(value);
         cancelBtn.setEnabled(value);
@@ -332,6 +334,11 @@ public class DepartemenView extends javax.swing.JFrame {
         searchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchBtn.setForeground(new java.awt.Color(247, 246, 244));
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -364,6 +371,11 @@ public class DepartemenView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableDepartemen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDepartemenMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableDepartemen);
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
@@ -505,6 +517,39 @@ public class DepartemenView extends javax.swing.JFrame {
         clearText();
         setEditDeleteBtn(false);
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        setEditDeleteBtn(false);
+        setComponent(false);
+
+        try {
+            TableDepartemen departemen = departemenControl.showDataDepartemen(searchDepartemenInput.getText());
+            if (departemen.getRowCount() == 0) {
+                clearText();
+                setEditDeleteBtn(false);
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+            } else {
+                tableDepartemen.setModel((TableModel) departemen);
+            }
+            //Ketika button cari diklik maka akan menghapus seluruh isi input
+            clearText();
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void tableDepartemenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDepartemenMouseClicked
+        setEditDeleteBtn(true);
+        setComponent(false);
+
+        int clickedRow = tableDepartemen.getSelectedRow();
+        TableModel tableModel = tableDepartemen.getModel();
+        selectedId = (String) tableModel.getValueAt(clickedRow, 0);
+        kodeDepartemenInput.setText(tableModel.getValueAt(clickedRow, 0).toString());
+        namaDepartemenInput.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        banyakAnggotaInput.setText(tableModel.getValueAt(clickedRow, 2).toString());
+        
+    }//GEN-LAST:event_tableDepartemenMouseClicked
 
     /**
      * @param args the command line arguments
