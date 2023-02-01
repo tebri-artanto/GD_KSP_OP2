@@ -10,11 +10,48 @@ import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.Departemen;
 import table.TableDepartemen;
+import exception.InputKosongException;
 public class DepartemenView extends javax.swing.JFrame {
-
+    
+    private DepartemenControl departemenControl;
+    String action = null;
+    String selectedId = null;
     
     public DepartemenView() {
         initComponents();
+    }
+    public void setComponent(boolean value) {
+        kodeDepartemenInput.setEnabled(value);
+        namaDepartemenInput.setEnabled(value);
+        banyakAnggotaInput.setEnabled(value);
+        searchDepartemenInput.setEnabled(value);
+        
+        saveBtn.setEnabled(value);
+        cancelBtn.setEnabled(value);
+    }
+    
+    public void setEditDeleteBtn(boolean value) {
+        updateBtn.setEnabled(value);
+        deleteBtn.setEnabled(value);
+    }
+    
+    public void clearText() {
+        kodeDepartemenInput.setText("");
+        namaDepartemenInput.setText("");
+        banyakAnggotaInput.setText("");
+        searchDepartemenInput.setText("");
+    }
+    
+    public void inputKosongException() throws InputKosongException {
+        if (kodeDepartemenInput.getText().isEmpty() || namaDepartemenInput.getText().isEmpty()
+            || banyakAnggotaInput.getText().isEmpty()) {
+            throw new InputKosongException();
+        }
+        
+    }    
+         
+    public void showDepartemen() {
+        tableDepartemen.setModel(departemenControl.showDataDepartemen(""));
     }
 
     /**
@@ -30,9 +67,9 @@ public class DepartemenView extends javax.swing.JFrame {
         logoIcon = new javax.swing.JLabel();
         navigationLabel = new javax.swing.JLabel();
         buttonKaryawan = new javax.swing.JPanel();
-        karyawanButtonLabel = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        karyawanBtnLabel = new javax.swing.JLabel();
+        buttonDepartemen = new javax.swing.JPanel();
+        depantemenBtnLabel = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         actionPanel = new javax.swing.JPanel();
         addBtn = new javax.swing.JButton();
@@ -49,7 +86,7 @@ public class DepartemenView extends javax.swing.JFrame {
         saveBtn = new javax.swing.JButton();
         searchPanel = new javax.swing.JPanel();
         searchBtn = new javax.swing.JButton();
-        seachDepartemenInput = new javax.swing.JTextField();
+        searchDepartemenInput = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDepartemen = new javax.swing.JTable();
         footerPanel = new javax.swing.JPanel();
@@ -66,11 +103,16 @@ public class DepartemenView extends javax.swing.JFrame {
         navigationLabel.setText("Perusahaan Mulia Jaya");
 
         buttonKaryawan.setBackground(new java.awt.Color(205, 154, 73));
+        buttonKaryawan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonKaryawanMouseClicked(evt);
+            }
+        });
 
-        karyawanButtonLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        karyawanButtonLabel.setForeground(new java.awt.Color(247, 246, 244));
-        karyawanButtonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        karyawanButtonLabel.setText("Karyawan");
+        karyawanBtnLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        karyawanBtnLabel.setForeground(new java.awt.Color(247, 246, 244));
+        karyawanBtnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        karyawanBtnLabel.setText("Karyawan");
 
         javax.swing.GroupLayout buttonKaryawanLayout = new javax.swing.GroupLayout(buttonKaryawan);
         buttonKaryawan.setLayout(buttonKaryawanLayout);
@@ -78,35 +120,35 @@ public class DepartemenView extends javax.swing.JFrame {
             buttonKaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonKaryawanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(karyawanButtonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(karyawanBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
         buttonKaryawanLayout.setVerticalGroup(
             buttonKaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(karyawanButtonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+            .addComponent(karyawanBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(205, 154, 73));
+        buttonDepartemen.setBackground(new java.awt.Color(205, 154, 73));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(247, 246, 244));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Departemen");
+        depantemenBtnLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        depantemenBtnLabel.setForeground(new java.awt.Color(247, 246, 244));
+        depantemenBtnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        depantemenBtnLabel.setText("Departemen");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout buttonDepartemenLayout = new javax.swing.GroupLayout(buttonDepartemen);
+        buttonDepartemen.setLayout(buttonDepartemenLayout);
+        buttonDepartemenLayout.setHorizontalGroup(
+            buttonDepartemenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonDepartemenLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                .addComponent(depantemenBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        buttonDepartemenLayout.setVerticalGroup(
+            buttonDepartemenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonDepartemenLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(depantemenBtnLabel)
                 .addContainerGap())
         );
 
@@ -122,7 +164,7 @@ public class DepartemenView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(buttonKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonDepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
         );
         navigationPanelLayout.setVerticalGroup(
@@ -137,7 +179,7 @@ public class DepartemenView extends javax.swing.JFrame {
                         .addGroup(navigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(navigationLabel)
                             .addComponent(buttonKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonDepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -221,11 +263,21 @@ public class DepartemenView extends javax.swing.JFrame {
         cancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cancelBtn.setForeground(new java.awt.Color(247, 246, 244));
         cancelBtn.setText("Cancel");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
         saveBtn.setBackground(new java.awt.Color(0, 153, 0));
         saveBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(247, 246, 244));
         saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dataPanelLayout = new javax.swing.GroupLayout(dataPanel);
         dataPanel.setLayout(dataPanelLayout);
@@ -287,7 +339,7 @@ public class DepartemenView extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(seachDepartemenInput)
+                .addComponent(searchDepartemenInput)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn)
                 .addContainerGap())
@@ -296,7 +348,7 @@ public class DepartemenView extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(seachDepartemenInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchDepartemenInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -382,16 +434,77 @@ public class DepartemenView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        setEditDeleteBtn(false);
+
+        clearText();
+        searchDepartemenInput.setText("");
+        action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        action = "Ubah";
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin ingin menghapus data ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        switch (getAnswer) {
+            case 0:
+            try {
+                departemenControl.deleteDataDepartemen(selectedId);
+                clearText();
+                showDepartemen();
+                setComponent(false);
+                setEditDeleteBtn(false);
+
+            } catch (Exception e) {
+                System.out.println("Error : " + e.getMessage());
+            }
+            break;
+            case 1:
+            break;
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void buttonKaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonKaryawanMouseClicked
+        StaffView sv = new StaffView();
+        this.dispose();
+        sv.setVisible(true);
+    }//GEN-LAST:event_buttonKaryawanMouseClicked
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        try{
+            inputKosongException();
+            if(action.equals("Tambah")){
+                Departemen d = new Departemen(kodeDepartemenInput.getText(), 
+                        namaDepartemenInput.getText(), 
+                        Integer.parseInt(banyakAnggotaInput.getText()));
+                departemenControl.insertDataDepartemen(d);
+
+            } else if(action.equals("Ubah")){
+                Departemen d = new Departemen(kodeDepartemenInput.getText(), 
+                        namaDepartemenInput.getText(), 
+                        Integer.parseInt(banyakAnggotaInput.getText()));
+
+                departemenControl.updateDataDepartemen(d, selectedId);
+                JOptionPane.showMessageDialog(null, "Data berhasil diubah!");
+            } 
+
+        }catch(InputKosongException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }
+        clearText();
+        showDepartemen();
+        setComponent(false);
+        setEditDeleteBtn(false);
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        setComponent(false);
+        clearText();
+        setEditDeleteBtn(false);
+    }//GEN-LAST:event_cancelBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,16 +546,16 @@ public class DepartemenView extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField banyakAnggotaInput;
     private javax.swing.JLabel banyakAnggotaLabel;
+    private javax.swing.JPanel buttonDepartemen;
     private javax.swing.JPanel buttonKaryawan;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JPanel dataPanel;
     private javax.swing.JButton deleteBtn;
+    private javax.swing.JLabel depantemenBtnLabel;
     private javax.swing.JPanel footerPanel;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel karyawanButtonLabel;
+    private javax.swing.JLabel karyawanBtnLabel;
     private javax.swing.JTextField kodeDepartemenInput;
     private javax.swing.JLabel kodeDepartemenLabel;
     private javax.swing.JLabel logoIcon;
@@ -451,8 +564,8 @@ public class DepartemenView extends javax.swing.JFrame {
     private javax.swing.JLabel navigationLabel;
     private javax.swing.JPanel navigationPanel;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JTextField seachDepartemenInput;
     private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchDepartemenInput;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTable tableDepartemen;
     private javax.swing.JButton updateBtn;
