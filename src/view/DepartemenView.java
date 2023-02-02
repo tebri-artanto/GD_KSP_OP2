@@ -529,7 +529,8 @@ public class DepartemenView extends javax.swing.JFrame {
             if (departemen.getRowCount() == 0) {
                 clearText();
                 setEditDeleteBtn(false);
-                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", 
+                        "Konfirmasi", JOptionPane.DEFAULT_OPTION);
             } else {
                 tableDepartemen.setModel((TableModel) departemen);
             }
