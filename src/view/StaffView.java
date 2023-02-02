@@ -10,16 +10,9 @@ import exception.NoStaffException;
 import model.Staff;
 
 
-/**
- *
- * @author Teprutz
- */
+
 public class StaffView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form StaffView
-     * 
-     */
     
     private StaffControl cu;
     Staff s;
@@ -97,7 +90,7 @@ public class StaffView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        dropDownDepartemen = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -320,8 +313,6 @@ public class StaffView extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Jenis Kelamin");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Departemen");
 
@@ -359,7 +350,7 @@ public class StaffView extends javax.swing.JFrame {
                                         .addComponent(btnAbout))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBox1, 0, 185, Short.MAX_VALUE)
+                                            .addComponent(dropDownDepartemen, 0, 185, Short.MAX_VALUE)
                                             .addComponent(txtNoStaff))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -387,7 +378,7 @@ public class StaffView extends javax.swing.JFrame {
                     .addComponent(jRadioPria)
                     .addComponent(jRadioWanita)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dropDownDepartemen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -543,7 +534,7 @@ public class StaffView extends javax.swing.JFrame {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
-        txtData.setText(cu.showDataStaff());
+        //txtData.setText(cu.showDataStaff());
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -579,7 +570,7 @@ public class StaffView extends javax.swing.JFrame {
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
         // TODO add your handling code here:
-        txtData.setText("Rakai Anandhi Mahardhika - 200710914 - 1");
+        //txtData.setText("Rakai Anandhi Mahardhika - 200710914 - 1");
     }//GEN-LAST:event_btnAboutActionPerformed
 
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
@@ -702,7 +693,7 @@ public class StaffView extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Departemen> dropDownDepartemen;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

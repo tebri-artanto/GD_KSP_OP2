@@ -92,7 +92,7 @@ public class DepartemenDAO {
     }
 
     public List<Departemen> search(String query) {
-        String sql = "SELECT * FROM departemen WHERE kodeDepartemen LIKE ? OR namaDepartemen LIKE ?";
+        String sql = "SELECT * FROM departemen WHERE kodeDepartemen LIKE ? OR namaDepartemen LIKE ? OR banyakAnggota LIKE ?";
         System.out.println("Searching Departemen...");
 
         ArrayList<Departemen> listDepartemen = new ArrayList<Departemen>();
@@ -102,6 +102,7 @@ public class DepartemenDAO {
             // Prepared Statement
             statement.setString(1, "%" + query + "%");
             statement.setString(2, "%" + query + "%");
+            statement.setString(3, "%" + query + "%");
 
             ResultSet result = statement.executeQuery();
 

@@ -5,12 +5,12 @@
 package view;
 
 import control.DepartemenControl;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import model.Departemen;
 import table.TableDepartemen;
 import exception.InputKosongException;
+
 public class DepartemenView extends javax.swing.JFrame {
     
     private DepartemenControl departemenControl;
@@ -456,6 +456,7 @@ public class DepartemenView extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         setComponent(true);
+        kodeDepartemenInput.setEnabled(false);
         action = "Ubah";
     }//GEN-LAST:event_updateBtnActionPerformed
 

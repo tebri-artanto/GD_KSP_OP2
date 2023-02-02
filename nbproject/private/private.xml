@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/KSP%20Java/GD_KSP_OP2/src/view/DepartemenView.java</file>
             <file>file:/D:/KSP%20Java/GD_KSP_OP2/src/view/StaffView.java</file>
+            <file>file:/D:/KSP%20Java/GD_KSP_OP2/src/dao/DepartemenDAO.java</file>
+            <file>file:/D:/KSP%20Java/GD_KSP_OP2/src/table/TableDepartemen.java</file>
         </group>
     </open-files>
 </project-private>
