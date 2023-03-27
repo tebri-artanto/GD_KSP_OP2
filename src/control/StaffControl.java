@@ -57,9 +57,17 @@ public class StaffControl {
 
     // di versi lama, ada showTable di sini, tapi tidak digunakan
 
-    public TableStaff showTableStaff() {
+    public Staff searchTableStaff(String noStaff) {
         sDAO.makeConnection();
-        List<Staff> staffList = sDAO.showStaff();
+        List<Staff> staffList = sDAO.(noStaff);
+        sDAO.closeConnection();
+
+        return s;
+
+    }
+    public TableStaff showTableStaff(String search) {
+        sDAO.makeConnection();
+        Staff staffList = this.searchStaff(search);
         TableStaff tableStaff = new TableStaff(staffList);
         sDAO.closeConnection();
         return tableStaff;

@@ -115,6 +115,11 @@ public class DepartemenView extends javax.swing.JFrame {
         karyawanBtnLabel.setForeground(new java.awt.Color(247, 246, 244));
         karyawanBtnLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         karyawanBtnLabel.setText("Karyawan");
+        karyawanBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                karyawanBtnLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonKaryawanLayout = new javax.swing.GroupLayout(buttonKaryawan);
         buttonKaryawan.setLayout(buttonKaryawanLayout);
@@ -399,16 +404,12 @@ public class DepartemenView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contentPanelLayout.createSequentialGroup()
-                                .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(17, Short.MAX_VALUE))
-                    .addGroup(contentPanelLayout.createSequentialGroup()
-                        .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(searchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(actionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         footerPanel.setBackground(new java.awt.Color(205, 154, 73));
@@ -534,7 +535,6 @@ public class DepartemenView extends javax.swing.JFrame {
             } else {
                 tableDepartemen.setModel((TableModel) departemen);
             }
-            //Ketika button cari diklik maka akan menghapus seluruh isi input
             clearText();
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
@@ -553,6 +553,12 @@ public class DepartemenView extends javax.swing.JFrame {
         banyakAnggotaInput.setText(tableModel.getValueAt(clickedRow, 2).toString());
         
     }//GEN-LAST:event_tableDepartemenMouseClicked
+
+    private void karyawanBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_karyawanBtnLabelMouseClicked
+        StaffView sv= new StaffView();
+        this.dispose();
+        sv.setVisible(true);
+    }//GEN-LAST:event_karyawanBtnLabelMouseClicked
 
     /**
      * @param args the command line arguments

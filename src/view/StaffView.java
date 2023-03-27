@@ -8,13 +8,17 @@ import javax.swing.JOptionPane;
 import control.StaffControl;
 import exception.NoStaffException;
 import model.Staff;
-
-
+import java.util.List;
+import model.Departemen;
+import table.TableStaff;
+import control.DepartemenControl;
 
 public class StaffView extends javax.swing.JFrame {
 
-    
     private StaffControl cu;
+    private DepartemenControl dc;
+    List<Departemen> listDepartemen;
+    String selectedId = null;
     Staff s;
     String action;
     
@@ -22,6 +26,7 @@ public class StaffView extends javax.swing.JFrame {
         initComponents();
         setEnFieldAnak(false);
         setEnDisStaff(false);
+        showKaryawan();
         cu = new StaffControl();
     }
     
@@ -31,6 +36,7 @@ public class StaffView extends javax.swing.JFrame {
         jRadioPria.setEnabled(val);
         jRadioWanita.setEnabled(val);
         jrButtonStaff.setEnabled(val);
+        dropDownDepartemen.setEnabled(val);
         
         btnCancel.setEnabled(val);
     }
@@ -51,6 +57,10 @@ public class StaffView extends javax.swing.JFrame {
         if (txtNoStaff.getText().length() >= 5 || txtNoStaff.getText().equalsIgnoreCase("")) {
             throw new NoStaffException();
         }
+    }
+    
+    public void showKaryawan() {
+        tableStaff.setModel(cu.showTableStaff(""));
     }
 
     /**
@@ -98,7 +108,7 @@ public class StaffView extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableStaff = new javax.swing.JTable();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -443,7 +453,7 @@ public class StaffView extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Tampil Data");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableStaff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -454,7 +464,7 @@ public class StaffView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tableStaff);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -576,6 +586,9 @@ public class StaffView extends javax.swing.JFrame {
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
         // TODO add your handling code here:
         try {
+            int selectedIndex = dropDownDepartemen.getSelectedIndex();
+            Departemen selectedDepartemen = listDepartemen.get(selectedIndex);
+            
             if (action.equalsIgnoreCase("Tambah")) {
                 if (jrButtonStaff.isSelected()==true) {
                     NoStaffException();
@@ -586,7 +599,7 @@ public class StaffView extends javax.swing.JFrame {
                         jenisKelamin= "Wanita";
                     }
                     s = new Staff(txtNoStaff.getText(), txtNama.getText(), 
-                            Integer.parseInt(txtJamKerja.getText()), jenisKelamin);
+                            Integer.parseInt(txtJamKerja.getText()), jenisKelamin, selectedDepartemen);
                     cu.insertDataStaff(s);
                     JOptionPane.showMessageDialog(this, 
                             "Data Staff berhasil ditambah!");
@@ -601,7 +614,7 @@ public class StaffView extends javax.swing.JFrame {
                         jenisKelamin= "Wanita";
                 }
                     s = new Staff(txtNoStaff.getText(), txtNama.getText(), 
-                            Integer.parseInt(txtJamKerja.getText()), jenisKelamin);
+                            Integer.parseInt(txtJamKerja.getText()), jenisKelamin,selectedDepartemen);
                 cu.updateDataStaff(s, txtSearch.getText());
                     JOptionPane.showMessageDialog(this, "Data berhasil diedit");
                     btnViewActionPerformed(evt);
@@ -715,8 +728,8 @@ public class StaffView extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioWanita;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton jrButtonStaff;
+    private javax.swing.JTable tableStaff;
     private javax.swing.JTextField txtJamKerja;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNoStaff;
