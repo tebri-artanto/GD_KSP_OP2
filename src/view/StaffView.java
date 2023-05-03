@@ -26,8 +26,13 @@ public class StaffView extends javax.swing.JFrame {
         initComponents();
         setEnFieldAnak(false);
         setEnDisStaff(false);
-        showKaryawan();
         cu = new StaffControl();
+        dc = new DepartemenControl();
+        listDepartemen = dc.searchDataDepartemen("");
+        for(Departemen d : listDepartemen) {
+            dropDownDepartemen.addItem(d);
+        }
+        showKaryawan();
     }
     
     private void setEnDisStaff(boolean val){
@@ -543,8 +548,14 @@ public class StaffView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
-        //txtData.setText(cu.showDataStaff());
+        // Set up table tampil data
+        TableStaff table = cu.showTableStaff(txtSearch.getText());
+        if (table.getRowCount() == 0) {
+            JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", 
+                    "Konfirmasi", JOptionPane.DEFAULT_OPTION);
+        } else {
+            tableStaff.setModel(table);
+        }
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -613,8 +624,12 @@ public class StaffView extends javax.swing.JFrame {
                     }else if (jRadioWanita.isSelected() == true) {
                         jenisKelamin= "Wanita";
                 }
-                    s = new Staff(txtNoStaff.getText(), txtNama.getText(), 
-                            Integer.parseInt(txtJamKerja.getText()), jenisKelamin,selectedDepartemen);
+                    s = new Staff(
+                            txtNoStaff.getText(), 
+                            txtNama.getText(), 
+                            Integer.parseInt(txtJamKerja.getText()),
+                            jenisKelamin,
+                            selectedDepartemen);
                 cu.updateDataStaff(s, txtSearch.getText());
                     JOptionPane.showMessageDialog(this, "Data berhasil diedit");
                     btnViewActionPerformed(evt);

@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package table;
 
 import java.util.List;
@@ -17,14 +12,17 @@ public class TableDepartemen extends AbstractTableModel {
         this.list = list;
     }
 
+    @Override
     public int getRowCount() {
         return list.size();
     }
 
+    @Override
     public int getColumnCount() {
         return 3;
     }
 
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:

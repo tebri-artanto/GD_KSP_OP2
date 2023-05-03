@@ -21,7 +21,7 @@ public class StaffControl {
 
     public String showDataStaff() {
         sDAO.makeConnection();
-        List<Staff> staffData = sDAO.showStaff();
+        List<Staff> staffData = sDAO.showStaff("");
         sDAO.closeConnection();
 
         String staffString = "";
@@ -59,7 +59,7 @@ public class StaffControl {
 
     public Staff searchTableStaff(String noStaff) {
         sDAO.makeConnection();
-        List<Staff> staffList = sDAO.(noStaff);
+        Staff s = sDAO.searchStaff(noStaff);
         sDAO.closeConnection();
 
         return s;
@@ -67,7 +67,7 @@ public class StaffControl {
     }
     public TableStaff showTableStaff(String search) {
         sDAO.makeConnection();
-        Staff staffList = this.searchStaff(search);
+        List<Staff> staffList = sDAO.showStaff(search);
         TableStaff tableStaff = new TableStaff(staffList);
         sDAO.closeConnection();
         return tableStaff;

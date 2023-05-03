@@ -23,7 +23,7 @@ public class StaffDAO {
     public void makeConnection() {
         System.out.println("Opening Database.....");
         try {
-            CON = DriverManager.getConnection(URL + PATH, "root", "");
+            CON = DriverManager.getConnection(URL + PATH, "pbouser", "");
             System.out.println("Success!");
         } catch (Exception e) {
             System.out.println("Error opening");
@@ -52,7 +52,7 @@ public class StaffDAO {
         try {
             Statement statement = CON.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Added" + result + "staff \n");
+            System.out.println("Added " + result + " staff \n");
             statement.close();
         } catch (Exception e) {
             System.out.println("Error adding Staff...");
@@ -61,8 +61,9 @@ public class StaffDAO {
     }
 
     // possible duplicate
-    public List<Staff> showStaff() {
-        String sql = "select * from staff";
+    public List<Staff> showStaff(String search) {
+        String sql = "select * from staff s join departemen d on s.kodeDepartemen = d.kodeDepartemen "
+                + "WHERE noStaff LIKE '%" + search + "%'";
         System.out.println("Mengambil data staff....");
 
         List<Staff> list = new ArrayList<>();
@@ -71,17 +72,18 @@ public class StaffDAO {
             Statement statement = CON.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
-            DepartemenControl dc = new DepartemenControl(); // [!] Penambahan [!]
-
             if (rs != null) {
                 while (rs.next()) {
-                    Departemen d = dc.getByKode(rs.getString("kodeDepartemen")); // [!] Penambahan [!]
+                    Departemen d = new Departemen(
+                            rs.getString("d.kodeDepartemen"),
+                            rs.getString("d.namaDepartemen"),
+                            rs.getInt("d.banyakAnggota"));
 
                     Staff s = new Staff(
-                            rs.getString("noStaff"),
-                            rs.getString("nama"),
-                            rs.getInt("jamKerja"),
-                            rs.getString("jenisKelamin"),
+                            rs.getString("s.noStaff"),
+                            rs.getString("s.nama"),
+                            rs.getInt("s.jamKerja"),
+                            rs.getString("s.jenisKelamin"),
                             d);
                     list.add(s);
                 }
@@ -93,11 +95,11 @@ public class StaffDAO {
             System.out.println(e);
         }
         return list;
-
     }
 
     public Staff searchStaff(String noStaff) {
-        String sql = "select * from staff where noStaff = '" + noStaff + "'";
+        String sql = "select * from staff s join departemen d on s.kodeDepartemen = d.kodeDepartemen "
+                + "where noStaff = '" + noStaff + "'";
         // [!] Query berubah [!]
         System.out.println("Searching Staff...");
 
@@ -107,16 +109,18 @@ public class StaffDAO {
             Statement statement = CON.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
-            DepartemenControl dc = new DepartemenControl(); // [!] Penambahan [!]
-
             if (rs != null) {
                 while (rs.next()) {
-                    Departemen d = dc.getByKode(rs.getString("kodeDepartemen")); // [!] Penambahan [!]
+                    Departemen d = new Departemen(
+                            rs.getString("d.kodeDepartemen"),
+                            rs.getString("d.namaDepartemen"),
+                            rs.getInt("d.banyakAnggota"));
+
                     s = new Staff(
-                            rs.getString("noStaff"),
-                            rs.getString("nama"),
-                            Integer.parseInt(rs.getString("jamKerja")),
-                            rs.getString("jenisKelamin"),
+                            rs.getString("s.noStaff"),
+                            rs.getString("s.nama"),
+                            Integer.parseInt(rs.getString("s.jamKerja")),
+                            rs.getString("s.jenisKelamin"),
                             d);
                 }
             }

@@ -17,7 +17,7 @@ public class DepartemenDAO {
     public void makeConnection() {
         System.out.println("Opening Database.....");
         try {
-            CON = DriverManager.getConnection(URL + PATH, "root", "");
+            CON = DriverManager.getConnection(URL + PATH, "pbouser", "");
             System.out.println("Success!");
         } catch (Exception e) {
             System.out.println("Error opening");

@@ -35,7 +35,7 @@ public class DepartemenControl {
 
     public TableDepartemen showDataDepartemen(String search) {
         dDAO.makeConnection();
-        List<Departemen> departemenList = this.searchDataDepartemen(search);
+        List<Departemen> departemenList = dDAO.search(search);
         TableDepartemen departemenData = new TableDepartemen(departemenList);
         dDAO.closeConnection();
 
