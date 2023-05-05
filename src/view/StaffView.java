@@ -77,9 +77,9 @@ public class StaffView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -120,10 +120,10 @@ public class StaffView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(59, 105, 120));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("GUIDED KSP OBJECT PERSISTENCE");
         jLabel1.setAlignmentY(0.0F);
 
@@ -145,13 +145,11 @@ public class StaffView extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(132, 169, 172));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel4.setBackground(new java.awt.Color(132, 169, 172));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         btnAdd.setBackground(new java.awt.Color(187, 187, 187));
-        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +158,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnUpdate.setBackground(new java.awt.Color(187, 187, 187));
-        btnUpdate.setForeground(new java.awt.Color(0, 0, 0));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +166,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnDelete.setBackground(new java.awt.Color(187, 187, 187));
-        btnDelete.setForeground(new java.awt.Color(0, 0, 0));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +174,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnView.setBackground(new java.awt.Color(187, 187, 187));
-        btnView.setForeground(new java.awt.Color(0, 0, 0));
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,8 +210,6 @@ public class StaffView extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(132, 169, 172));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        txtSearch.setBackground(new java.awt.Color(255, 255, 255));
-        txtSearch.setForeground(new java.awt.Color(0, 0, 0));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
@@ -224,7 +217,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnSearch.setBackground(new java.awt.Color(187, 187, 187));
-        btnSearch.setForeground(new java.awt.Color(0, 0, 0));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +249,6 @@ public class StaffView extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         btnAbout.setBackground(new java.awt.Color(187, 187, 187));
-        btnAbout.setForeground(new java.awt.Color(0, 0, 0));
         btnAbout.setText("About");
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +257,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnDone.setBackground(new java.awt.Color(187, 187, 187));
-        btnDone.setForeground(new java.awt.Color(0, 0, 0));
         btnDone.setText("Done");
         btnDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,7 +265,6 @@ public class StaffView extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(187, 187, 187));
-        btnCancel.setForeground(new java.awt.Color(0, 0, 0));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,7 +272,6 @@ public class StaffView extends javax.swing.JFrame {
             }
         });
 
-        jrButtonStaff.setForeground(new java.awt.Color(0, 0, 0));
         jrButtonStaff.setText("Staff");
         jrButtonStaff.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -296,13 +284,6 @@ public class StaffView extends javax.swing.JFrame {
             }
         });
 
-        txtNama.setBackground(new java.awt.Color(255, 255, 255));
-        txtNama.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtJamKerja.setBackground(new java.awt.Color(255, 255, 255));
-        txtJamKerja.setForeground(new java.awt.Color(0, 0, 0));
-
-        jRadioPria.setForeground(new java.awt.Color(0, 0, 0));
         jRadioPria.setText("Pria");
         jRadioPria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,25 +291,16 @@ public class StaffView extends javax.swing.JFrame {
             }
         });
 
-        jRadioWanita.setForeground(new java.awt.Color(0, 0, 0));
         jRadioWanita.setText("Wanita");
 
-        txtNoStaff.setBackground(new java.awt.Color(255, 255, 255));
-        txtNoStaff.setForeground(new java.awt.Color(0, 0, 0));
-
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("No Staff");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nama");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Jam Kerja");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Jenis Kelamin");
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Departemen");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -403,13 +375,10 @@ public class StaffView extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Pencarian");
 
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Aksi");
 
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Data");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -453,9 +422,7 @@ public class StaffView extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 240));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Tampil Data");
 
         tableStaff.setModel(new javax.swing.table.DefaultTableModel(
@@ -541,7 +508,7 @@ public class StaffView extends javax.swing.JFrame {
         }
         clearTxt();
         txtSearch.setText("");
-        buttonGroup1.clearSelection();
+        buttonGroup3.clearSelection();
         jrButtonStaff.setSelected(false);
         setEnDisStaff(false);
         btnViewActionPerformed(evt);
@@ -585,7 +552,7 @@ public class StaffView extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "No Staff tidak ditemukan!");
             jrButtonStaff.setSelected(false);
-            buttonGroup1.clearSelection();
+            buttonGroup3.clearSelection();
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -619,11 +586,11 @@ public class StaffView extends javax.swing.JFrame {
             }else if (action.equalsIgnoreCase("editAtauDeleteStaff")) {
                 NoStaffException();
                 String jenisKelamin = "";
-                    if (jRadioPria.isSelected() == true) {
-                    jenisKelamin = "Pria";
-                    }else if (jRadioWanita.isSelected() == true) {
-                        jenisKelamin= "Wanita";
-                }
+                    if (jRadioPria.isSelected()) {
+                        jenisKelamin = "Pria";
+                    }else if (jRadioWanita.isSelected()) {
+                        jenisKelamin = "Wanita";
+                    }
                     s = new Staff(
                             txtNoStaff.getText(), 
                             txtNama.getText(), 
@@ -647,7 +614,7 @@ public class StaffView extends javax.swing.JFrame {
         setEnFieldAnak(false);
         setEnDisStaff(false);
         jrButtonStaff.setSelected(false);
-        buttonGroup1.clearSelection();
+        buttonGroup3.clearSelection();
         txtSearch.setText("");
         btnAdd.setEnabled(true);
         btnUpdate.setEnabled(true);
@@ -720,7 +687,7 @@ public class StaffView extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<Departemen> dropDownDepartemen;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;

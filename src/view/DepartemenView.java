@@ -65,6 +65,7 @@ public class DepartemenView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         navigationPanel = new javax.swing.JPanel();
         logoIcon = new javax.swing.JLabel();
         navigationLabel = new javax.swing.JLabel();
@@ -393,10 +394,10 @@ public class DepartemenView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(11, 11, 11))
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +439,7 @@ public class DepartemenView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(navigationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -508,6 +509,8 @@ public class DepartemenView extends javax.swing.JFrame {
 
         }catch(InputKosongException e){
             JOptionPane.showMessageDialog(this, e.message());
+        }catch(NumberFormatException e1) {
+            JOptionPane.showMessageDialog(this, "Input tidak valid");
         }
         clearText();
         showDepartemen();
@@ -601,6 +604,7 @@ public class DepartemenView extends javax.swing.JFrame {
     private javax.swing.JTextField banyakAnggotaInput;
     private javax.swing.JLabel banyakAnggotaLabel;
     private javax.swing.JPanel buttonDepartemen;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel buttonKaryawan;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel contentPanel;

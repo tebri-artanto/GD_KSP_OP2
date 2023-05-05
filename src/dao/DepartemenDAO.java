@@ -12,13 +12,13 @@ import model.Departemen;
 public class DepartemenDAO {
     public static Connection CON;
     public static final String URL = "jdbc:mysql://";
-//    public static final String PATH = "localhost:3306/ksp_xxxx";
-    public static final String PATH = "20.25.52.46:3306/tubes_pbo_sebenarnya_op2?useSSL=false";
+    public static final String PATH = "localhost:3306/ksp_xxxx";
+//    public static final String PATH = "20.25.52.46:3306/tubes_pbo_sebenarnya_op2?useSSL=false";
 
     public void makeConnection() {
         System.out.println("Opening Database.....");
         try {
-            CON = DriverManager.getConnection(URL + PATH, "tubes_pbo_sebenarnya_op2", "tubes_pbo_sebenarnya_op2");
+            CON = DriverManager.getConnection(URL + PATH, "pbouser", "");
             System.out.println("Success!");
         } catch (Exception e) {
             System.out.println("Error opening");
